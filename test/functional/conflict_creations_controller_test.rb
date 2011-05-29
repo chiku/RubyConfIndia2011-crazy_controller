@@ -8,7 +8,7 @@ class ConflictCreationsControllerTest < ActionController::TestCase
       end
 
       should respond_with(:unprocessable_entity)
-      should have_an_error("Are")
+      should have_an_error("Op can't be blank")
     end
 
     context "when original dn and ocn are blank" do

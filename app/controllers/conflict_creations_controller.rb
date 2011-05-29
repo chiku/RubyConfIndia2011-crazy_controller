@@ -1,5 +1,10 @@
 class ConflictCreationsController < ApplicationController
   def create_conflict
+    conflict_creation = ConflictCreation.new params
+    if conflict_creation.invalid?
+      render_unprocessable_entity(conflict_creation.errors) and return
+    end
+
     render_unprocessable_entity("Are") and return if params[:op].blank?
 
     if params[:dn].blank? and params[:ocn].blank?
