@@ -5,8 +5,6 @@ class ConflictCreationsController < ApplicationController
       render_unprocessable_entity(conflict_creation.errors) and return
     end
 
-    render_unprocessable_entity("Are") and return if params[:op].blank?
-
     if params[:dn].blank? and params[:ocn].blank?
       render_unprocessable_entity("You") and return
     end
