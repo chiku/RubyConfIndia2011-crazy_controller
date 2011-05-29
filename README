@@ -1,0 +1,5 @@
+This is Rails 3.0 application that runs on ruby 1.9.2
+
+This code was presented in RubyConf India 2011 by Habibullah Pagarkar and Chirantan Mitra
+
+This code shows one of the ways to move logic from a controller into a model.
