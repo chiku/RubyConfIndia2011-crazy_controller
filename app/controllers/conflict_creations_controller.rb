@@ -5,12 +5,6 @@ class ConflictCreationsController < ApplicationController
       render_unprocessable_entity(conflict_creation.errors) and return
     end
 
-    if params[:dn].blank? and params[:ocn].blank?
-      render_unprocessable_entity("You") and return
-    end
-
-    # ... more of these ...
-
     which_1 = params[:dn] || params[:ocn]
     got_ya = CrazyStuff.find_by_which_1(which_1)
 
