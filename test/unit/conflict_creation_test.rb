@@ -26,7 +26,7 @@ class ConflictCreationTest < ActiveSupport::TestCase
 
   test "should be valid via 'dn'" do
     dn                = 'dn'
-    crazy_stuff       = Factory :crazy_stuff, :op => 'op', :conflicted => true, :which_1 => dn
+    crazy_stuff       = Factory :conflicted_crazy_stuff, :which_1 => dn
     conflict_creation = ConflictCreation.new :op => crazy_stuff.op, :dn => dn
 
     assert conflict_creation.valid?
@@ -34,7 +34,7 @@ class ConflictCreationTest < ActiveSupport::TestCase
 
   test "should be valid via 'ocn'" do
     ocn               = 'ocn'
-    crazy_stuff       = Factory :crazy_stuff, :op => 'op', :conflicted => true, :which_1 => ocn
+    crazy_stuff       = Factory :conflicted_crazy_stuff, :which_1 => ocn
     conflict_creation = ConflictCreation.new :op => crazy_stuff.op, :ocn => ocn
 
     assert conflict_creation.valid?
