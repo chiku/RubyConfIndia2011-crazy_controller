@@ -5,12 +5,10 @@ class ConflictCreationsController < ApplicationController
       render_unprocessable_entity(conflict_creation.errors) and return
     end
 
-    got_ya = conflict_creation.got_ya
-
-    if got_ya.conflicted?
-      render :xml => got_ya, :status => :created
+    if conflict_creation.valid?
+      render :xml => conflict_creation.got_ya, :status => :created
     else
-      render_unprocessable_entity(got_ya.errors)
+      render_unprocessable_entity(conflict_creation.got_ya.errors)
     end
   end
 
