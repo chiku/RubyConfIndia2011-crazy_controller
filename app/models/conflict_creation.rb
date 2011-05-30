@@ -6,7 +6,7 @@ class ConflictCreation
   validates_presence_of :op
   validate :dn_or_ocn_is_present
 
-  def initialize(options = {}) 
+  def initialize(options = {})
     @op  = options[:op]
     @dn  = options[:dn]
     @ocn = options[:ocn]

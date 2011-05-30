@@ -16,19 +16,19 @@ class ConflictCreationTest < ActiveSupport::TestCase
   end
 
   test "should be valid via 'dn'" do
-    conflict_creation = ConflictCreation.new :dn => 'dn', :op => 'op'
+    conflict_creation = ConflictCreation.new :op => 'op', :dn => 'dn'
 
     assert conflict_creation.valid?
   end
 
   test "should be valid via 'ocn'" do
-    conflict_creation = ConflictCreation.new :ocn => 'ocn', :op => 'op'
+    conflict_creation = ConflictCreation.new :op => 'op', :ocn => 'ocn'
 
     assert conflict_creation.valid?
   end
 
   test "should properly assign 'got_ya' via 'dn'" do
-    dn                = dn
+    dn                = 'dn'
     crazy_stuff       = Factory :crazy_stuff, :which_1 => dn
     conflict_creation = ConflictCreation.new :dn => dn
 
@@ -36,7 +36,7 @@ class ConflictCreationTest < ActiveSupport::TestCase
   end
 
   test "should properly assign 'got_ya' via 'ocn'" do
-    ocn               = ocn
+    ocn               = 'ocn'
     crazy_stuff       = Factory :crazy_stuff, :which_1 => ocn
     conflict_creation = ConflictCreation.new :ocn => ocn
 
