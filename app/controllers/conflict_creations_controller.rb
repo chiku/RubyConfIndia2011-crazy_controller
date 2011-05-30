@@ -1,14 +1,11 @@
 class ConflictCreationsController < ApplicationController
   def create_conflict
     conflict_creation = ConflictCreation.new params
-    if conflict_creation.invalid?
-      render_unprocessable_entity(conflict_creation.errors) and return
-    end
 
     if conflict_creation.valid?
       render :xml => conflict_creation.got_ya, :status => :created
     else
-      render_unprocessable_entity(conflict_creation.got_ya.errors)
+      render_unprocessable_entity(conflict_creation.errors)
     end
   end
 
