@@ -12,6 +12,7 @@ class ConflictCreation
     @ocn = options[:ocn]
 
     assign_got_ya
+    conflict
   end
 
   private
@@ -19,6 +20,10 @@ class ConflictCreation
   def assign_got_ya
     which_1 = dn || ocn
     @got_ya = CrazyStuff.find_by_which_1(which_1)
+  end
+
+  def conflict
+    got_ya and got_ya.conflict_with op
   end
 
   def dn_or_ocn_is_present

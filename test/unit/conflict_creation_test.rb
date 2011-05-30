@@ -62,4 +62,20 @@ class ConflictCreationTest < ActiveSupport::TestCase
 
     assert_equal nil, conflict_creation.got_ya
   end
+
+  test "should conflict an already non-conflicted crazy stuff via 'dn'" do
+    dn                = 'dn'
+    crazy_stuff       = Factory :crazy_stuff, :conflicted => false, :which_1 => dn
+    conflict_creation = ConflictCreation.new :op => 'op', :dn => dn
+
+    assert crazy_stuff.reload.conflicted?
+  end
+
+  test "should conflict an already non-conflicted crazy stuff via 'ocn'" do
+    ocn               = 'ocn'
+    crazy_stuff       = Factory :crazy_stuff, :conflicted => false, :which_1 => ocn
+    conflict_creation = ConflictCreation.new :op => 'op', :ocn => ocn
+
+    assert crazy_stuff.reload.conflicted?
+  end
 end
