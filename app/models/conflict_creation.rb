@@ -3,7 +3,7 @@ class ConflictCreation
 
   attr_accessor :op, :dn, :ocn, :got_ya
 
-  validates_presence_of :op
+  validates_presence_of :op, :got_ya
   validate :dn_or_ocn_is_present
 
   def initialize(options = {})

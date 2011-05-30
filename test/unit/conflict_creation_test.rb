@@ -15,14 +15,27 @@ class ConflictCreationTest < ActiveSupport::TestCase
     assert conflict_creation.errors[:base].present?
   end
 
+  test "should have an error when 'got_ya' is absent" do
+    crazy_stuff       = Factory :crazy_stuff, :which_1 => 'something else'
+    conflict_creation = ConflictCreation.new :dn => 'dn', :ocn => 'ocn'
+    assert conflict_creation.got_ya.nil?
+
+    assert conflict_creation.invalid?
+    assert conflict_creation.errors[:got_ya].present?
+  end
+
   test "should be valid via 'dn'" do
-    conflict_creation = ConflictCreation.new :op => 'op', :dn => 'dn'
+    dn                = 'dn'
+    crazy_stuff       = Factory :crazy_stuff, :op => 'op', :conflicted => true, :which_1 => dn
+    conflict_creation = ConflictCreation.new :op => crazy_stuff.op, :dn => dn
 
     assert conflict_creation.valid?
   end
 
   test "should be valid via 'ocn'" do
-    conflict_creation = ConflictCreation.new :op => 'op', :ocn => 'ocn'
+    ocn               = 'ocn'
+    crazy_stuff       = Factory :crazy_stuff, :op => 'op', :conflicted => true, :which_1 => ocn
+    conflict_creation = ConflictCreation.new :op => crazy_stuff.op, :ocn => ocn
 
     assert conflict_creation.valid?
   end

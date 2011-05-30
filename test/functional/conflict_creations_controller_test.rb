@@ -27,7 +27,7 @@ class ConflictCreationsControllerTest < ActionController::TestCase
       end
 
       should respond_with(:unprocessable_entity)
-      should have_an_error("Really")
+      should have_an_error("Got ya can't be blank")
     end
 
     context "when non-conflicted crazy stuff exists via dn" do
